@@ -1,5 +1,18 @@
-import { createGlobalStyle, ThemeProvider } from "styled-components";
+import { createGlobalStyle, DefaultTheme, ThemeProvider } from "styled-components";
 import db from "../db.json";
+
+interface ThemeProps extends DefaultTheme{
+    colors: {
+        primary:string,
+        secondary: string,
+        mainBg: string,
+        contrastText: string,
+        wrong: string,
+        success: string
+      }
+}
+
+const theme: ThemeProps = db.theme;
 
 let GlobalStyle = createGlobalStyle`
 
@@ -13,7 +26,7 @@ body{
     display:flex;
     flex-direction:column;
     font-family: "Lato", sans-serif;
-    color: ${({ theme }) => theme.colors.contrastText};
+    color: ${({ theme }:any) => theme.colors.contrastText};
 }
 
 html,body{
@@ -28,7 +41,6 @@ html,body{
 
 `;
 
-const theme = db.theme;
 
 export default function Global({ children }: any) {
   return (

@@ -1,8 +1,8 @@
-import { QuizContainer } from "./styles";
 import Widget from "../src/components/Widget";
 import Global from "../style/global";
 import db from "../db.json";
 import QuizLogo from "../src/components/QuizLogo";
+import  QuizContainer  from "../src/components/QuizContainer";
 import QuizBackground from "../src/components/QuizBackground";
 import Footer from "../src/components/Footer";
 import GitHubCorner from "../src/components/GitHubCorner";
