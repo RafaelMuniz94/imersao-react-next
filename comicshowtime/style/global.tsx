@@ -1,15 +1,20 @@
-import { createGlobalStyle, DefaultTheme, ThemeProvider } from "styled-components";
+import {
+  createGlobalStyle,
+  DefaultTheme,
+  ThemeProvider,
+} from "styled-components";
+import Head from "next/head";
 import db from "../db.json";
 
-interface ThemeProps extends DefaultTheme{
-    colors: {
-        primary:string,
-        secondary: string,
-        mainBg: string,
-        contrastText: string,
-        wrong: string,
-        success: string
-      }
+interface ThemeProps extends DefaultTheme {
+  colors: {
+    primary: string;
+    secondary: string;
+    mainBg: string;
+    contrastText: string;
+    wrong: string;
+    success: string;
+  };
 }
 
 const theme: ThemeProps = db.theme;
@@ -26,7 +31,7 @@ body{
     display:flex;
     flex-direction:column;
     font-family: "Lato", sans-serif;
-    color: ${({ theme }:any) => theme.colors.contrastText};
+    color: ${({ theme }: any) => theme.colors.contrastText};
 }
 
 html,body{
@@ -41,10 +46,23 @@ html,body{
 
 `;
 
-
 export default function Global({ children }: any) {
   return (
     <>
+      <Head>
+        <title>Comic show quiz!</title>
+        <meta property="og:image" content={db.bg} />
+        <meta
+          property="og:description"
+          content="Teste seus conhecimentos sobre séries de comédia"
+        />
+        <meta property="og:title" content="Comic show Quiz!" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap"
+          rel="stylesheet"
+        />
+      </Head>
       <ThemeProvider theme={theme}>
         <GlobalStyle />
         {children}
