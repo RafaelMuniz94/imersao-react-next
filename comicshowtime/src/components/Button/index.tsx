@@ -1,7 +1,7 @@
 import React, { ButtonHTMLAttributes } from "react";
 import styled from "styled-components";
 
-interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement>{
   text?: string;
 }
 
@@ -29,8 +29,8 @@ let ButtonBase = styled.button`
   }
 `;
 
-let Button: React.FC<ButtonProps> = ({text}) => {
-  return <ButtonBase>
+let Button: React.FC<ButtonProps> = ({text,...rest}) => {
+  return <ButtonBase {...rest}>
       {text}
   </ButtonBase>
   ;

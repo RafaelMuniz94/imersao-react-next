@@ -19,6 +19,7 @@ let screenStates = {
 
 export default function Quizes() {
   let [screenState, setScreenState] = useState(screenStates.Loading);
+  let [pontos, setPontos] = useState(0);
   let totalQuestions = db.questions.length;
   let [index, setIndex] = useState(0);
   let question = db.questions[index];
@@ -39,6 +40,11 @@ export default function Quizes() {
     }
   }, [index]);
 
+
+  let handlePontos = useCallback(() =>{
+    setPontos(pontos + 1)
+  },[pontos])
+
   return (
     <Global>
       <QuizBackground backgroundImage={db.bg}>
@@ -50,9 +56,10 @@ export default function Quizes() {
               questionsCount={totalQuestions}
               questionIndex={index}
               setIndex={handleIndex}
+              setPontos={handlePontos}
             />
           )}
-          {screenState === screenStates.Result && <div>XXXXX</div>}
+          {screenState === screenStates.Result && <div>{pontos}</div>}
         </QuizContainer>
         <GitHubCorner projectUrl="https://github.com/RafaelMuniz94" />
         <Footer />
