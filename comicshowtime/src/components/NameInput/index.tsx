@@ -16,7 +16,7 @@ const Input = styled.input`
   height: 38px;
   position: absolute;
   max-width: 281px;
-  width: 281px;
+  width: 100%px;
   font-family: "Lato" sans-serif;
   font-weight: 700;
   padding: 7px 82px 7px 15px;
@@ -32,8 +32,8 @@ const Button = styled.button`
   top: 35px;
   position: relative;
   max-width: 279px;
-  width: 279px;
-  border-radius: 4px;
+  width: 100%;
+  border-radius: ${({ theme }) => theme.borderRadius};
   text-overflow: ellipsis;
   overflow: hidden;
   height: 36px;
@@ -45,6 +45,12 @@ const Button = styled.button`
   &:enabled {
     background-color: ${({ theme }) => theme.colors.secondary};
     color: ${({ theme }) => theme.colors.contrastText};
+  }
+
+  @media screen and (max-width: 500px) {
+    flex:1;
+    top: 5px;
+    margin: auto;
   }
 `;
 
