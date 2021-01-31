@@ -1,4 +1,3 @@
-import styled from 'styled-components'
 import Widget from '../Widget'
 
 export default function LoadingWidget(){

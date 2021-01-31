@@ -3,7 +3,7 @@ import Widget from "../../components/Widget";
 
 interface IResult {
   acertos: boolean[];
-  name: string;
+  name: string | string[];
 }
 
 let ResultWidget: React.FC<IResult> = ({ acertos,name }) => {

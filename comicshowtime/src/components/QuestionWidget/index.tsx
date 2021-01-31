@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import styled from "styled-components";
+import React from "react";
+
 import Widget from "../Widget";
 import AlternativeList from "../AlternativeList";
 import ImageContainer from "../ImageContainer";
