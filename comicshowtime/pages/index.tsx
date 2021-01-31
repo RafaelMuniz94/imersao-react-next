@@ -6,7 +6,7 @@ import QuizContainer from "../src/components/QuizContainer";
 import QuizBackground from "../src/components/QuizBackground";
 import Footer from "../src/components/Footer";
 import GitHubCorner from "../src/components/GitHubCorner";
-import NameInput from '../src/components/NameInput'
+import NameInput from "../src/components/NameInput";
 
 export default function Home() {
   // No arquivo index, deve existir uma funcao default para ser exportada, dessa forma o next saberá montar a tela
@@ -21,15 +21,23 @@ export default function Home() {
             </Widget.Header>
             <Widget.Content>
               <p>{db.description}</p>
-              <NameInput/>
+              <NameInput />
             </Widget.Content>
           </Widget>
 
           <Widget>
             <Widget.Content>
               <h1>Quizes da Galera</h1>
-
-              <p>lorem ipsum dolor sit amet...</p>
+              <ul>
+                {db.external.map((link) => {
+                  let [projeto,user] = link.replace(/\//g,'').replace('https:','').replace('.vercel.app','').split('.')
+                  return (
+                    <li key={link}>
+                      <Widget.Topic href={link}>{`${user}/${projeto}`}</Widget.Topic>
+                    </li>
+                  );
+                })}
+              </ul>
             </Widget.Content>
           </Widget>
         </QuizContainer>

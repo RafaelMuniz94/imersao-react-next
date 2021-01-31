@@ -1,8 +1,7 @@
 import { useState, useEffect, useCallback } from "react";
 import QuizBackground from "../src/components/QuizBackground";
 import GitHubCorner from "../src/components/GitHubCorner";
-
-import Button from "../src/components/Button";
+import {useRouter} from 'next/router'
 import QuizContainer from "../src/components/QuizContainer";
 import LoadingWidget from "../src/components/LoadingWidget";
 
@@ -24,6 +23,10 @@ export default function Quizes() {
   let totalQuestions = db.questions.length;
   let [index, setIndex] = useState(0);
   let question = db.questions[index];
+  let router = useRouter()
+  let{name} = router.query
+
+
 
   useEffect(() => {
     setTimeout(() => {
@@ -64,7 +67,7 @@ export default function Quizes() {
             />
           )}
           {screenState === screenStates.Result && (
-            <ResultWidget acertos={acertos} />
+            <ResultWidget acertos={acertos} name={name}/>
           )}
         </QuizContainer>
         <GitHubCorner projectUrl="https://github.com/RafaelMuniz94" />

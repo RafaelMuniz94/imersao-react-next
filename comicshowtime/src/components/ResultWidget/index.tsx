@@ -3,9 +3,10 @@ import Widget from "../../components/Widget";
 
 interface IResult {
   acertos: boolean[];
+  name: string;
 }
 
-let ResultWidget: React.FC<IResult> = ({ acertos }) => {
+let ResultWidget: React.FC<IResult> = ({ acertos,name }) => {
   let [qtdAcertos, setQuantidadeAcertos] = useState(0);
 
   useEffect(() => {
@@ -19,7 +20,7 @@ let ResultWidget: React.FC<IResult> = ({ acertos }) => {
 
   return (
     <Widget>
-      <Widget.Header>Resultados</Widget.Header>
+      <Widget.Header>Resultados de {name}</Widget.Header>
       <Widget.Content>
         <p>{`${qtdAcertos} acertos de ${acertos.length} questões`}</p>
         <ul>

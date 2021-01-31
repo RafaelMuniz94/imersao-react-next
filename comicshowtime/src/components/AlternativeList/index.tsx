@@ -55,7 +55,8 @@ const AlternativeList: React.FC<IAlternativeComponent> = ({
               name={questionID}
               type="radio"
               onChange={() => {
-                setIndexSelecionado(index);
+                let ind = index
+                setIndexSelecionado(ind);
               }}
             />
             {alternative}
