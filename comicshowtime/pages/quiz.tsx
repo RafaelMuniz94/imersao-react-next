@@ -7,6 +7,7 @@ import QuizContainer from "../src/components/QuizContainer";
 import LoadingWidget from "../src/components/LoadingWidget";
 
 import QuestionWidget from "../src/components/QuestionWidget";
+import ResultWidget from "../src/components/ResultWidget";
 import Footer from "../src/components/Footer";
 import Global from "../style/global";
 import db from "../db.json";
@@ -19,7 +20,7 @@ let screenStates = {
 
 export default function Quizes() {
   let [screenState, setScreenState] = useState(screenStates.Loading);
-  let [pontos, setPontos] = useState(0);
+  let [acertos, setAcertos] = useState([] as boolean[]);
   let totalQuestions = db.questions.length;
   let [index, setIndex] = useState(0);
   let question = db.questions[index];
@@ -40,10 +41,13 @@ export default function Quizes() {
     }
   }, [index]);
 
+  let handleAcertos = useCallback(
+    (index) => {
+      setAcertos([...acertos, index]);
+    },
+    [acertos]
+  );
 
-  let handlePontos = useCallback(() =>{
-    setPontos(pontos + 1)
-  },[pontos])
 
   return (
     <Global>
@@ -56,10 +60,12 @@ export default function Quizes() {
               questionsCount={totalQuestions}
               questionIndex={index}
               setIndex={handleIndex}
-              setPontos={handlePontos}
+              setAcertos={handleAcertos}
             />
           )}
-          {screenState === screenStates.Result && <div>{pontos}</div>}
+          {screenState === screenStates.Result && (
+            <ResultWidget acertos={acertos} />
+          )}
         </QuizContainer>
         <GitHubCorner projectUrl="https://github.com/RafaelMuniz94" />
         <Footer />

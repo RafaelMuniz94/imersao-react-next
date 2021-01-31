@@ -1,9 +1,5 @@
 import styled,{css} from "styled-components";
 
-interface TopicProps {
-  isTrue: boolean;
-}
-
 const Widget: any = styled.div`
   margin-top: 24px;
   margin-bottom: 24px;
@@ -53,7 +49,7 @@ Widget.Content = styled.div`
   }
 `;
 
-Widget.Topic = styled.a<TopicProps>`
+Widget.Topic = styled.a`
   outline: 0;
   text-decoration: none;
   color: ${({ theme }) => theme.colors.contrastText};
@@ -74,9 +70,6 @@ Widget.Topic = styled.a<TopicProps>`
     display: none;
   }
 
-  &:has(input:active) {
-    background-color: red;
-  }
 `;
 
 export default Widget;

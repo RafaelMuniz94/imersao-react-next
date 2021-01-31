@@ -18,7 +18,7 @@ interface IWidget {
   questionsCount: number;
   questionIndex: number;
   setIndex(): void;
-  setPontos(): void;
+  setAcertos(index:boolean): void;
 }
 
 const QuestionWidget: React.FC<IWidget> = ({
@@ -26,7 +26,7 @@ const QuestionWidget: React.FC<IWidget> = ({
   questionsCount,
   questionIndex,
   setIndex,
-  setPontos,
+  setAcertos,
 }: IWidget) => {
   let questionID = `question__${questionIndex}`;
   return (
@@ -45,7 +45,7 @@ const QuestionWidget: React.FC<IWidget> = ({
           alternatives={question.alternatives}
           questionID={questionID}
           setIndex={setIndex}
-          setPontos={setPontos}
+          setAcertos={setAcertos}
           answer={question.answer}
         />
       </Widget.Content>
